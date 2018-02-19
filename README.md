@@ -1,10 +1,10 @@
-# truffle-hdwallet-provider
+# knowledge-hdwallet-provider
 HD Wallet-enabled Web3 provider. Use it to sign transactions for addresses derived from a 12-word mnemonic.
 
 ## Install
 
 ```
-$ npm install @knowledgeio/truffle-hdwallet-provider
+$ npm install @knowledgeio/knowledge-hdwallet-provider
 ```
 
 ## General Usage
@@ -12,7 +12,7 @@ $ npm install @knowledgeio/truffle-hdwallet-provider
 You can use this provider wherever a Web3 provider is needed, not just in Truffle. For Truffle-specific usage, see next section.
 
 ```javascript
-var HDWalletProvider = require("truffle-hdwallet-provider");
+var HDWalletProvider = require("@knowledgeio/knowledge-hdwallet-provider");
 var mnemonic = "opinion destroy betray ..."; // 12 word mnemonic
 var provider = new HDWalletProvider(mnemonic, "http://localhost:8545");
 
@@ -34,7 +34,7 @@ You can easily use this within a Truffle configuration. For instance:
 
 truffle.js
 ```javascript
-var HDWalletProvider = require("truffle-hdwallet-provider");
+var HDWalletProvider = require("@knowledgeio/knowledge-hdwallet-provider");
 
 var mnemonic = "opinion destroy betray ...";
 

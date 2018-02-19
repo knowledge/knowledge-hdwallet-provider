@@ -1,11 +1,11 @@
 {
   "name": "@knowledgeio/knowledge-hdwallet-provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HD Wallet-enabled Web3 provider",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/knowledge/truffle-hdwallet-provider.git"
+    "url": "git+https://github.com/knowledge/knowledge-hdwallet-provider.git"
   },
   "author": "Tim Coulter <tim.coulter@consensys.net>",
   "license": "MIT",
