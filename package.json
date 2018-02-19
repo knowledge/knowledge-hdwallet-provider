@@ -1,22 +1,12 @@
 {
-  "name": "truffle-hdwallet-provider",
-  "version": "0.0.3",
+  "name": "@knowledgeio/knowledge-hdwallet-provider",
+  "version": "1.0.0",
   "description": "HD Wallet-enabled Web3 provider",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trufflesuite/truffle-hdwallet-provider.git"
+    "url": "git+https://github.com/knowledge/truffle-hdwallet-provider.git"
   },
-  "keywords": [
-    "etheruem",
-    "hd",
-    "wallet",
-    "mnemonic",
-    "provider"
-  ],
   "author": "Tim Coulter <tim.coulter@consensys.net>",
   "license": "MIT",
   "bugs": {

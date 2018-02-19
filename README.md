@@ -4,7 +4,7 @@ HD Wallet-enabled Web3 provider. Use it to sign transactions for addresses deriv
 ## Install
 
 ```
-$ npm install truffle-hdwallet-provider
+$ npm install @knowledgeio/truffle-hdwallet-provider
 ```
 
 ## General Usage
