@@ -30,7 +30,7 @@ function HDWalletProvider(mnemonic, provider_url, address_index=0, num_addresses
     const indexA = addressesToDispose.indexOf(address);
     const indexB = tmp_accounts.indexOf(address);
 
-    if (index === -1) {
+    if (indexA === -1) {
       return;
     }
 
