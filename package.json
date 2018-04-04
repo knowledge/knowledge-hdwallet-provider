@@ -1,6 +1,6 @@
 {
   "name": "@knowledgeio/knowledge-hdwallet-provider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "HD Wallet-enabled Web3 provider",
   "main": "index.js",
   "repository": {
