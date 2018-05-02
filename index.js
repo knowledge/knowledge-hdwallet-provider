@@ -13,6 +13,7 @@ function HDWalletProvider(mnemonic, provider_url, address_index=0, num_addresses
   this.wallet_hdpath = "m/44'/60'/0'/0/";
   this.wallets = {};
   this.addresses = [];
+  this.addressesToDispose = [];
 
   for (let i = address_index; i < address_index + num_addresses; i++){
     var wallet = this.hdwallet.derivePath(this.wallet_hdpath + i).getWallet();
@@ -23,6 +24,20 @@ function HDWalletProvider(mnemonic, provider_url, address_index=0, num_addresses
 
   const tmp_accounts = this.addresses;
   const tmp_wallets = this.wallets;
+  const addressesToDispose = this.addressesToDispose;
+
+  const dispose = function(address) {
+    const indexA = addressesToDispose.indexOf(address);
+    const indexB = tmp_accounts.indexOf(address);
+
+    if (indexA === -1) {
+      return;
+    }
+
+    addressesToDispose.splice(indexA, 1);
+    tmp_accounts.splice(indexB, 1);
+    delete tmp_wallets[address];
+  }
 
   this.engine = new ProviderEngine();
   this.engine.addProvider(new HookedSubprovider({
@@ -38,12 +53,22 @@ function HDWalletProvider(mnemonic, provider_url, address_index=0, num_addresses
       var tx = new Transaction(txParams);
       tx.sign(pkey);
       var rawTx = '0x' + tx.serialize().toString('hex');
+      dispose(txParams.from);
       cb(null, rawTx);
     }
   }));
   this.engine.addProvider(new FiltersSubprovider());
   this.engine.addProvider(new Web3Subprovider(new Web3.providers.HttpProvider(provider_url)));
   this.engine.start(); // Required by the provider engine.
+};
+
+HDWalletProvider.prototype.unlock = function(mnemonic, index) {
+  const hdwallet = hdkey.fromMasterSeed(bip39.mnemonicToSeed(mnemonic));
+  const wallet = hdwallet.derivePath(this.wallet_hdpath + index).getWallet();
+  const address = '0x' + wallet.getAddress().toString('hex');
+  this.addresses.push(address);
+  this.wallets[address] = wallet;
+  this.addressesToDispose.push(address)
 };
 
 HDWalletProvider.prototype.sendAsync = function() {
